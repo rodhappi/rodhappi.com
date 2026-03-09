@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="{{description}}">
+  <title>{{title}} — Rod Happi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <a href="#content" class="skip-link">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-identity">
+        <a href="../index.html" class="site-name">Rod Happi</a>
+      </div>
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <ul class="nav-links">
+          <li><a href="../index.html" class="nav-link">Inicio</a></li>
+        </ul>
+        <ul class="social-links" aria-label="Redes sociales">
+          <li><a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)">X</a></li>
+          <li class="social-sep" aria-hidden="true">/</li>
+          <li><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">LinkedIn</a></li>
+          <li class="social-sep" aria-hidden="true">/</li>
+          <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">GitHub</a></li>
+        </ul>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú de navegación">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="content" class="site-main">
+    <article class="post">
+      <header class="post-header">
+        <h1 class="post-title">{{title}}</h1>
+        <time class="post-date">{{date}}</time>
+      </header>
+      <div class="post-content">
+        {{content}}
+      </div>
+    </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="../index.html" class="back-link">← Volver al inicio</a>
+      <ul class="social-links" aria-label="Redes sociales">
+        <li><a href="https://x.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X (Twitter)">X</a></li>
+        <li class="social-sep" aria-hidden="true">/</li>
+        <li><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">LinkedIn</a></li>
+        <li class="social-sep" aria-hidden="true">/</li>
+        <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">GitHub</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>
