@@ -1,5 +1,5 @@
 ---
-title: "Tiempo sin escribir: Lo que desaprendí."
+title: "Tres cosas que desaprendí trabajando en producto y por qué costó."
 date: 2026-03-10
 description: "Lo que desaprendí, lo que estoy explorando para saber y lo que construyo para seguir aprendiendo."
 featured: false
@@ -17,9 +17,9 @@ Cuando escribo, busco contrastar lo que sé con lo que otros saben y ver qué sa
 
 En este sentido, existe una diferencia entre creer algo y saberlo. Creer cambia con un buen argumento, o también, con mucha fé. Mientras que saber es lo que te queda cuando has vivido algo suficientes veces como para ya no poder ignorarlo. 
 
-Este primer post es una especie de declaración en torno a lo anterior: Lo que desaprendí, lo que estoy explorando para saber y lo que construyo para seguir aprendiendo y resolviendo problemas.
+Este primer post es una especie de declaración en torno a lo anterior, específicamente lo que desaprendí.
 
-Vamos entonces con lo que desaprendí!
+Vamos entonces!
 
 
 ---
@@ -65,7 +65,7 @@ Luego de eso, supe que el problema no era la falta de visión de los ejecutivos,
 
 Finalmente, todo esto me llevó a comprender una posición más desafiante. Si el rol no define tu valor, y el contexto determina las reglas del juego, lo que queda es uno mismo y qué tan dispuesto estás a tomar control y hacerte cargo de los resultados de tus apuestas de producto, más que el proceso que lo soporta.
 
-## Debes sentirte cómodo con la responsabilidad de perder si no generas valor
+## 3. Debes sentirte cómodo con la responsabilidad de perder si no generas valor.
 
 Durante años he venido escuchando el mismo comentario, "el problema es que las organizaciones, o mis líderes, tienen mentalidad de proyecto y no de producto". Si bien la diferencia importa y hay verdad en eso, con el tiempo entendí que ese comentario muchas veces venía para apuntar el dedo hacia otros, sin preguntarse qué estaba pasándonos internamente.
 
@@ -81,8 +81,9 @@ La respuesta incómoda es que la responsabilidad no vive en el proceso. Vive en 
 
 ---
 
-Volví a escribir porque tengo algo que probar — no que decir.
+## El ombligo no es una brújula.
 
-Si estás viendo la misma esquina, bienvenido.
+Desaprender es incómodo, porque implica soltar algo en lo que invertiste. Un rol, una narrativa, una forma de ver el problema. Sin embargo, es necesario. No es una señal de debilidad, sino de que la experiencia te está enseñando algo que ningún libro puede. Si algo de lo que escribí resuena, quizás vale la pena preguntarse qué estás sosteniendo que ya no te sirve. Y si la respuesta te incomoda, probablemente es la correcta.
+
 
 — rodhappi
