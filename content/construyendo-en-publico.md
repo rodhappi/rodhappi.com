@@ -1,8 +1,9 @@
 ---
 title: "Construyendo en público"
-date: 2026-02-20
+date: 2026-03-10
 description: "Por qué decidí documentar mi proceso de construcción de productos y qué he aprendido en el camino."
 featured: false
+status: draft
 ---
 
 ## La idea

@@ -10,7 +10,8 @@ function escapeHtml(str) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 // --- Frontmatter Parser (Task 1.2) ---
@@ -50,6 +51,8 @@ function parseFrontmatter(content, filePath) {
 
     if (key === 'featured') {
       meta.featured = value === 'true';
+    } else if (key === 'status') {
+      meta.status = value === 'draft' ? 'draft' : 'published';
     } else if (key === 'date') {
       const parsed = new Date(value + 'T00:00:00');
       if (isNaN(parsed.getTime())) {
@@ -97,6 +100,7 @@ function defaults(filePath) {
     dateCard: formatDateCard(date),
     description: '',
     featured: false,
+    status: 'published',
     thumbnail: '',
     readingTime: 1,
   };
@@ -385,6 +389,11 @@ function build() {
     const { meta, body } = parseFrontmatter(raw, filePath);
     const content = parseMarkdown(body.trim());
 
+    if (meta.status === 'draft') {
+      console.log(`  ⊘ ${file} (draft, skipped)`);
+      continue;
+    }
+
     posts.push({ slug, meta, content });
   }
 
@@ -409,10 +418,14 @@ function build() {
 
   // Generate individual post pages (FR-4)
   for (const post of posts) {
+    const descriptionHtml = post.meta.description
+      ? `<p class="post-description">${escapeHtml(post.meta.description)}</p>`
+      : '';
     const html = renderTemplate(postTemplate, {
       title: post.meta.title,
       date: post.meta.dateStr,
       description: post.meta.description,
+      description_html: descriptionHtml,
       content: post.content,
     });
     fs.writeFileSync(path.join(postsDir, `${post.slug}.html`), html, 'utf-8');

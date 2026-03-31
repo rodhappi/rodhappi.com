@@ -3,6 +3,7 @@ title: "El futuro de la IA en América Latina"
 date: 2026-02-26
 description: "Una reflexión sobre cómo la inteligencia artificial está transformando la región y qué oportunidades se abren para el ecosistema tecnológico latinoamericano."
 featured: true
+status: draft
 ---
 
 ## El momento es ahora

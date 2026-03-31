@@ -3,6 +3,7 @@ title: "Herramientas que uso a diario"
 date: 2026-02-15
 description: "Mi stack personal de herramientas para desarrollo, escritura y productividad."
 featured: false
+status: draft
 ---
 
 ## Desarrollo

@@ -3,6 +3,7 @@ title: "De construir features a construir sistemas: el cambio con IA"
 date: 2026-03-02
 description: "Cómo la inteligencia artificial está cambiando la unidad fundamental del desarrollo de software — de funciones individuales a sistemas completos."
 thumbnail: media/thumbnail-sistemas.png
+status: draft
 ---
 
 ## El viejo modelo

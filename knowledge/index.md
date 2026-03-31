@@ -16,6 +16,8 @@
 - [Scope CSS Changes with Body Classes](patterns/css/scope-css-with-body-classes.md) -- Add a class to `<body>` to scope page-specific CSS without affecting other pages
 - [Mobile-First CSS Restructure Strategy](patterns/css/mobile-first-restructure-strategy.md) -- Flip defaults: mobile overrides become base, desktop rules move into min-width blocks
 - [Remove Dead CSS During Restructure](patterns/css/remove-dead-css-during-restructure.md) -- Audit CSS for orphaned classes when templates change significantly
+- [Audit Literal Values When Introducing CSS Variables](patterns/css/audit-literals-when-introducing-variables.md) -- Grep for the literal value to find all instances that should use the new variable
+- [Font Inheritance for Content Isolation](patterns/css/font-inheritance-for-content-isolation.md) -- Set font-family on the container; children inherit without per-element overrides
 - [Validate URL Schemes on User-Provided Paths](patterns/security/validate-url-schemes-on-frontmatter-paths.md) -- HTML-escaping alone doesn't block dangerous URL schemes; apply a safe-URL allowlist
 - [Dismiss False P1s with Contextual Analysis](patterns/review-process/dismiss-false-p1s-with-context.md) -- Verify agent P1 findings against actual code paths before treating as blockers
 
@@ -58,6 +60,8 @@ _No entries yet._
 - 2026-03-01: [Tap Target Size Calculation](expertise/frontend/tap-target-calculation.md)
 - 2026-03-02: [Validate URL Schemes on User-Provided Paths](patterns/security/validate-url-schemes-on-frontmatter-paths.md)
 - 2026-03-02: [Dismiss False P1s with Contextual Analysis](patterns/review-process/dismiss-false-p1s-with-context.md)
+- 2026-03-11: [Audit Literal Values When Introducing CSS Variables](patterns/css/audit-literals-when-introducing-variables.md)
+- 2026-03-11: [Font Inheritance for Content Isolation](patterns/css/font-inheritance-for-content-isolation.md)
 
 ## Needs Expansion
 _No entries yet._
