@@ -219,7 +219,7 @@ hr {
   max-width: var(--content-width);
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
-  padding-top: var(--space-2xl);
+  padding-top: 3.2rem;
   animation: fadeIn 400ms ease-out;
 }
 
