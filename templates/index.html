@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Blog personal de Rod Happi — AI, tecnología y América Latina">
+  <title>Rod Happi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:wght@400;500&family=Merriweather:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="page-home">
+  <a href="#content" class="skip-link">Saltar al contenido</a>
+
+  <main id="content" class="site-main">
+    <div class="identity">
+      <h1 class="identity-name">Rodrigo Alegre</h1>
+      <p class="identity-line">Fundador alt_FWD | Director Continuum | Organizador ProductTank CL</p>
+      <p class="identity-line">Reflexionando y creando sistemas que hacen la pega.</p>
+    </div>
+
+    <section class="escritos" aria-label="Destacados">
+      <h2 class="section-label">Análisis e ideas del mes</h2>
+      {{featured_section}}
+    </section>
+
+    <section class="archivo" aria-label="Archivo de publicaciones">
+      <button class="archive-toggle" aria-expanded="false" aria-controls="archive-list">
+        Archivo <span class="archive-chevron" aria-hidden="true">▾</span>
+      </button>
+      <div id="archive-list" class="archive-content" hidden>
+        {{posts}}
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <ul class="social-links" aria-label="Redes sociales">
+      <li><a href="https://www.linkedin.com/in/rodrigoalegrem/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">LinkedIn</a></li>
+      <li class="social-sep" aria-hidden="true">/</li>
+      <li><a href="https://github.com/rodhappi/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">GitHub</a></li>
+    </ul>
+  </footer>
+
+  <script src="js/nav.js" defer></script>
+</body>
+</html>
