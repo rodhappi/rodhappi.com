@@ -14,6 +14,17 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+function escapeXml(str) {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&apos;');
+}
+
+const SITE_URL = 'https://www.rodhappi.com';
+
 // --- Frontmatter Parser (Task 1.2) ---
 
 function parseFrontmatter(content, filePath) {
@@ -67,6 +78,10 @@ function parseFrontmatter(content, filePath) {
       meta[key] = value;
     }
   }
+
+  // Preserve raw values for JSON-LD and feeds (before HTML escaping)
+  meta.rawTitle = meta.title;
+  meta.rawDescription = meta.description || '';
 
   // Escape frontmatter values used in HTML
   meta.title = escapeHtml(meta.title);
@@ -421,12 +436,29 @@ function build() {
     const descriptionHtml = post.meta.description
       ? `<p class="post-description">${escapeHtml(post.meta.description)}</p>`
       : '';
+    const postUrl = `${SITE_URL}/posts/${encodeURIComponent(post.slug)}.html`;
+    const isoDate = post.meta.date.toISOString().split('T')[0];
+    const jsonLd = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: post.meta.rawTitle,
+      description: post.meta.rawDescription || post.meta.rawTitle,
+      datePublished: isoDate,
+      url: postUrl,
+      author: { '@type': 'Person', name: 'Rodrigo Alegre' },
+      publisher: { '@type': 'Person', name: 'Rodrigo Alegre' },
+      inLanguage: 'es',
+    }).replace(/<\//g, '<\\/');
     const html = renderTemplate(postTemplate, {
       title: post.meta.title,
       date: post.meta.dateStr,
       description: post.meta.description,
       description_html: descriptionHtml,
       content: post.content,
+      url: postUrl,
+      site_url: SITE_URL,
+      iso_date: isoDate,
+      json_ld: `<script type="application/ld+json">${jsonLd}</script>`,
     });
     fs.writeFileSync(path.join(postsDir, `${post.slug}.html`), html, 'utf-8');
   }
@@ -439,7 +471,7 @@ function build() {
       const thumb = post.meta.thumbnail
         ? `<img src="${post.meta.thumbnail}" alt="" class="post-card-thumb" loading="lazy">`
         : '';
-      return `<a href="posts/${post.slug}.html" class="post-card">
+      return `<a href="posts/${encodeURIComponent(post.slug)}.html" class="post-card">
       ${thumb}<div class="post-card-body">
         <span class="post-card-date">${post.meta.dateCard}</span>
         <span class="post-card-title">${post.meta.title}</span>
@@ -453,11 +485,102 @@ function build() {
   const featuredSection = renderPostCards(escritosPosts);
 
   // Generate homepage (FR-5)
+  const homeUrl = SITE_URL;
+  const homeJsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Rod Happi',
+    url: homeUrl,
+    description: 'Blog personal de Rod Happi — AI, tecnología y América Latina',
+    author: { '@type': 'Person', name: 'Rodrigo Alegre' },
+    inLanguage: 'es',
+  }).replace(/<\//g, '<\\/');
   const homeHtml = renderTemplate(indexTemplate, {
     featured_section: featuredSection,
     posts: archiveHtml,
+    url: homeUrl,
+    site_url: SITE_URL,
+    json_ld: `<script type="application/ld+json">${homeJsonLd}</script>`,
   });
   fs.writeFileSync(indexPath, homeHtml, 'utf-8');
+
+  // Generate robots.txt
+  const robotsTxt = `# Search engine crawlers
+User-agent: *
+Allow: /
+
+# AI search crawlers (real-time retrieval)
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+# AI training crawlers (block)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+Sitemap: ${SITE_URL}/sitemap.xml
+`;
+  fs.writeFileSync(path.join(rootDir, 'robots.txt'), robotsTxt, 'utf-8');
+
+  // Generate sitemap.xml
+  const today = new Date().toISOString().split('T')[0];
+  const sitemapEntries = [
+    `  <url>\n    <loc>${SITE_URL}/</loc>\n    <lastmod>${today}</lastmod>\n  </url>`,
+    ...posts.map(p => {
+      const loc = `${SITE_URL}/posts/${encodeURIComponent(p.slug)}.html`;
+      const lastmod = p.meta.date.toISOString().split('T')[0];
+      return `  <url>\n    <loc>${escapeXml(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n  </url>`;
+    }),
+  ];
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapEntries.join('\n')}
+</urlset>
+`;
+  fs.writeFileSync(path.join(rootDir, 'sitemap.xml'), sitemapXml, 'utf-8');
+
+  // Generate feed.xml (RSS 2.0)
+  const feedItems = posts.map(p => {
+    const link = `${SITE_URL}/posts/${encodeURIComponent(p.slug)}.html`;
+    const pubDate = p.meta.date.toUTCString();
+    return `    <item>
+      <title>${escapeXml(p.meta.rawTitle)}</title>
+      <link>${escapeXml(link)}</link>
+      <description>${escapeXml(p.meta.rawDescription || p.meta.rawTitle)}</description>
+      <pubDate>${escapeXml(pubDate)}</pubDate>
+      <guid>${escapeXml(link)}</guid>
+    </item>`;
+  });
+  const feedXml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rod Happi</title>
+    <link>${SITE_URL}</link>
+    <description>Blog personal de Rod Happi — AI, tecnología y América Latina</description>
+    <language>es</language>
+    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>
+${feedItems.join('\n')}
+  </channel>
+</rss>
+`;
+  fs.writeFileSync(path.join(rootDir, 'feed.xml'), feedXml, 'utf-8');
 
   console.log(`✓ ${posts.length} post(s) built successfully.`);
 }

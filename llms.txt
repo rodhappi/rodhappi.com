@@ -1,0 +1,25 @@
+# Rod Happi
+
+> Blog personal de Rodrigo Alegre — AI, tecnología y América Latina.
+
+## About
+
+This is a personal blog written in Spanish by Rodrigo Alegre, covering artificial intelligence, technology, and product development with a Latin American perspective. The site is a static blog built with vanilla HTML/CSS/JS.
+
+## Site Structure
+
+- Homepage: https://www.rodhappi.com/
+- Posts: https://www.rodhappi.com/posts/{slug}.html
+- RSS Feed: https://www.rodhappi.com/feed.xml
+- Sitemap: https://www.rodhappi.com/sitemap.xml
+
+## Topics
+
+- Artificial Intelligence and its adoption in Latin America
+- Product management and development
+- Technology tools and workflows
+- Building in public
+
+## Author
+
+Rodrigo Alegre — Life as Code | Building Systems that do the Job

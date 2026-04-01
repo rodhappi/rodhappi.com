@@ -30,6 +30,10 @@ jobs:
           cp -r css _site/
           cp -r js _site/
           cp -r media _site/
+          cp robots.txt _site/
+          cp sitemap.xml _site/
+          cp feed.xml _site/
+          cp llms.txt _site/
           echo "www.rodhappi.com" > _site/CNAME
 
       - uses: actions/configure-pages@v5
