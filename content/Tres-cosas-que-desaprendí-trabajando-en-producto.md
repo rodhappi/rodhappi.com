@@ -1,6 +1,6 @@
 ---
-title: "Tres cosas que desaprendí trabajando en producto y por qué costó."
-date: 2026-03-10
+title: "Tres cosas que desaprendí trabajando en producto."
+date: 2026-03-15
 description: "Lo que desaprendí, lo que estoy explorando para saber y lo que construyo para seguir aprendiendo."
 featured: false
 thumbnail: media/thumbnail-sistemas.png
