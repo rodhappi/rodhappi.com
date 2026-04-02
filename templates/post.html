@@ -102,9 +102,10 @@
       msg.hidden = true;
       fetch('https://script.google.com/macros/s/AKfycbw8r3KjZJrInDUEfWNhRRv7a30UYzGw9N2S7WlvPuniZG35XyJ_hQljFUE4wTvOFmlG/exec', {
         method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify({ email: emailInput.value }),
       })
-      .then(function(r) { return r.json(); })
       .then(function() {
         msg.textContent = 'Gracias por suscribirte!';
         msg.className = 'subscribe-message subscribe-success';
