@@ -252,7 +252,7 @@ hr {
 .site-header {
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 200;
   background: var(--color-bg);
 }
 
@@ -285,7 +285,7 @@ hr {
   bottom: 0;
   width: 75vw;
   max-width: 320px;
-  background: var(--color-bg);
+  background-color: var(--color-bg);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -299,7 +299,8 @@ hr {
 
 .site-nav.nav-open {
   transform: translateX(0);
-  box-shadow: -4px 0 24px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  box-shadow: -8px 0 32px rgba(0, 0, 0, 0.15);
 }
 
 .nav-links {
@@ -457,6 +458,178 @@ hr {
   margin-top: var(--space-lg);
 }
 
+/* === Share Button === */
+
+.post-header {
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-md);
+}
+
+.share-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: var(--space-lg);
+  margin-left: auto;
+  float: right;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  cursor: pointer;
+  position: relative;
+  transition: color 200ms, border-color 200ms;
+}
+
+.share-button:hover {
+  color: var(--color-text);
+  border-color: var(--color-text);
+}
+
+.share-icon {
+  flex-shrink: 0;
+}
+
+.share-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #ffffff;
+  background: var(--color-text);
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms;
+}
+
+.share-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: var(--color-text);
+}
+
+.share-tooltip.visible {
+  opacity: 1;
+}
+
+/* === Subscribe Box === */
+
+.subscribe-box {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-xl);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-home .subscribe-box {
+  border-top: none;
+  padding-top: 0;
+}
+
+.subscribe-title {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.subscribe-subtitle {
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-lg);
+}
+
+.subscribe-form {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.subscribe-input {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  background: var(--color-bg);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color 200ms;
+}
+
+.subscribe-input:focus {
+  border-color: var(--color-text);
+}
+
+.subscribe-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.subscribe-button {
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: var(--color-text);
+  color: var(--color-bg);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: opacity 200ms;
+  white-space: nowrap;
+}
+
+.subscribe-button:hover {
+  opacity: 0.85;
+}
+
+.subscribe-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.subscribe-message {
+  margin-top: var(--space-md);
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+}
+
+.subscribe-success {
+  color: #2e7d32;
+}
+
+.subscribe-error {
+  color: #c62828;
+}
+
+@media (max-width: 480px) {
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-button {
+    width: 100%;
+  }
+}
+
 /* === Footer === */
 
 .site-footer {
@@ -599,7 +772,7 @@ hr {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 140;
 }
 

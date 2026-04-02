@@ -64,12 +64,77 @@
         <h1 class="post-title">{{title}}</h1>
         {{description_html}}
         <time class="post-date">{{date}}</time>
+        <button class="share-button" id="share-btn" aria-label="Compartir">
+          <svg class="share-icon" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 8.5a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0zM15 3a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0zM15 14a2.5 2.5 0 1 0-5 0 2.5 2.5 0 0 0 5 0zM6 8.5l4.5-4M6 8.5l4.5 4"/>
+          </svg>
+          Compartir
+          <span class="share-tooltip" id="share-tooltip">Copiado</span>
+        </button>
       </header>
       <div class="post-content">
         {{content}}
       </div>
     </article>
+
+    <section class="subscribe-box" aria-label="Suscripción">
+      <h2 class="subscribe-title">Suscríbete. 100% Cosas Útiles. 0 SPAM</h2>
+      <p class="subscribe-subtitle">Estoy volviendo a escribir. Sobre producto, ingeniería, diseño e IA — y lo que pasa cuando todo eso colapsa o converge. Antes pensaba más en software y producto. Hoy más en sistemas y experiencias. Construyo para saber. Sin roles. Sin hype. Con curiosidad. Si te parece interesante, suscríbete.</p>
+      <form class="subscribe-form" id="subscribe-form" aria-label="Formulario de suscripción">
+        <input type="email" class="subscribe-input" id="subscribe-email" placeholder="Ingresa tu email" required autocomplete="email">
+        <button type="submit" class="subscribe-button" id="subscribe-btn">Subscribirse</button>
+      </form>
+      <p class="subscribe-message" id="subscribe-message" hidden></p>
+    </section>
   </main>
+
+  <script>
+  (function() {
+    var form = document.getElementById('subscribe-form');
+    var btn = document.getElementById('subscribe-btn');
+    var msg = document.getElementById('subscribe-message');
+    var emailInput = document.getElementById('subscribe-email');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = '...';
+      msg.hidden = true;
+      fetch('https://script.google.com/macros/s/AKfycbw8r3KjZJrInDUEfWNhRRv7a30UYzGw9N2S7WlvPuniZG35XyJ_hQljFUE4wTvOFmlG/exec', {
+        method: 'POST',
+        body: JSON.stringify({ email: emailInput.value }),
+      })
+      .then(function(r) { return r.json(); })
+      .then(function() {
+        msg.textContent = 'Gracias por suscribirte!';
+        msg.className = 'subscribe-message subscribe-success';
+        msg.hidden = false;
+        form.reset();
+      })
+      .catch(function() {
+        msg.textContent = 'Ups algo no está funcionando. Por favor, inténtalo más tarde.';
+        msg.className = 'subscribe-message subscribe-error';
+        msg.hidden = false;
+      })
+      .finally(function() {
+        btn.disabled = false;
+        btn.textContent = 'Suscribirse';
+      });
+    });
+  })();
+
+  (function() {
+    var btn = document.getElementById('share-btn');
+    var tooltip = document.getElementById('share-tooltip');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      navigator.clipboard.writeText(window.location.href).then(function() {
+        tooltip.classList.add('visible');
+        setTimeout(function() { tooltip.classList.remove('visible'); }, 2000);
+      });
+    });
+  })();
+  </script>
 
   <footer class="site-footer">
     <div class="footer-inner">

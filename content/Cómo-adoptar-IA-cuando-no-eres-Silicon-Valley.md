@@ -104,8 +104,3 @@ Una distinción que Rahul hizo y que cambia completamente el framing para servic
 Nadie va a someter a JP Morgan o Santander a una disrupción, son demasiado grandes. Sin embargo, los bancos sí quieren procesar créditos más rápido, hacer cross-sell más inteligente, liberar tiempo de sus equipos para trabajo de mayor valor. La IA en banca no es supervivencia, es margen.
 
 Esto cambia radicalmente cómo podemos empujar la IA en un banco o servicio financiero. No es "transfórmate o muere". Es en la práctica "esto te ahorra X horas por semana en este proceso específico, y eso se traduce en Y en eficiencia operacional."
-
----
-
-
-— rodhappi

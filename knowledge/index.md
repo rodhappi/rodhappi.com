@@ -20,6 +20,9 @@
 - [Font Inheritance for Content Isolation](patterns/css/font-inheritance-for-content-isolation.md) -- Set font-family on the container; children inherit without per-element overrides
 - [Validate URL Schemes on User-Provided Paths](patterns/security/validate-url-schemes-on-frontmatter-paths.md) -- HTML-escaping alone doesn't block dangerous URL schemes; apply a safe-URL allowlist
 - [Dismiss False P1s with Contextual Analysis](patterns/review-process/dismiss-false-p1s-with-context.md) -- Verify agent P1 findings against actual code paths before treating as blockers
+- [Preserve Raw Values Before HTML Escaping](patterns/build-pipeline/preserve-raw-values-before-escaping.md) -- Store unescaped copies for JSON-LD, RSS, and other non-HTML formats
+- [Add Generated Build Artifacts to .gitignore](patterns/build-pipeline/gitignore-generated-build-artifacts.md) -- Root-anchor generated files; verify CI copies them to deploy staging
+- [Consistent URL Encoding Across Formats](patterns/seo/consistent-url-encoding-across-formats.md) -- Use encodeURIComponent() everywhere URLs appear to avoid fragmented link equity
 
 ## Fixes
 - [Skills Must Live in .claude/skills/ for Slash Command Discovery](fixes/claude-code/skills-directory-location.md) -- Skills at project root are not discovered as slash commands
@@ -62,6 +65,9 @@ _No entries yet._
 - 2026-03-02: [Dismiss False P1s with Contextual Analysis](patterns/review-process/dismiss-false-p1s-with-context.md)
 - 2026-03-11: [Audit Literal Values When Introducing CSS Variables](patterns/css/audit-literals-when-introducing-variables.md)
 - 2026-03-11: [Font Inheritance for Content Isolation](patterns/css/font-inheritance-for-content-isolation.md)
+- 2026-04-01: [Preserve Raw Values Before HTML Escaping](patterns/build-pipeline/preserve-raw-values-before-escaping.md)
+- 2026-04-01: [Add Generated Build Artifacts to .gitignore](patterns/build-pipeline/gitignore-generated-build-artifacts.md)
+- 2026-04-01: [Consistent URL Encoding Across Formats](patterns/seo/consistent-url-encoding-across-formats.md)
 
 ## Needs Expansion
 _No entries yet._

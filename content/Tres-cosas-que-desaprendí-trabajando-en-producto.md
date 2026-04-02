@@ -84,6 +84,3 @@ La respuesta incómoda es que la responsabilidad no vive en el proceso. Vive en 
 ## El ombligo no es una brújula.
 
 Desaprender es incómodo, porque implica soltar algo en lo que invertiste. Un rol, una narrativa, una forma de ver el problema. Sin embargo, es necesario. No es una señal de debilidad, sino de que la experiencia te está enseñando algo que ningún libro puede. Si algo de lo que escribí resuena, quizás vale la pena preguntarse qué estás sosteniendo que ya no te sirve. Y si la respuesta te incomoda, probablemente es la correcta.
-
-
-— rodhappi
