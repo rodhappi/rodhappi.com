@@ -34,6 +34,7 @@ jobs:
           cp sitemap.xml _site/
           cp feed.xml _site/
           cp llms.txt _site/
+          cp favicon.ico favicon-16x16.png favicon-32x32.png apple-touch-icon.png android-chrome-192x192.png android-chrome-512x512.png site.webmanifest _site/
           echo "www.rodhappi.com" > _site/CNAME
 
       - uses: actions/configure-pages@v5
