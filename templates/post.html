@@ -32,7 +32,15 @@
     o[m]=o[m]||function(){o._q[m===v[0]?'unshift':'push']([m].concat([].slice.call(arguments,0)));};})(v[w]);
     y=e.createElement(n);y.async=!0;y.src='https://cdn.pendo.io/agent/static/'+apiKey+'/pendo.js';
     z=e.getElementsByTagName(n)[0];z.parentNode.insertBefore(y,z);})(window,document,'script','pendo');
-    pendo.initialize();
+    var visitorId = localStorage.getItem('pendo_visitor_id');
+    if (!visitorId) {
+      visitorId = 'anon-' + Date.now() + '-' + Math.random().toString(36).slice(2, 10);
+      localStorage.setItem('pendo_visitor_id', visitorId);
+    }
+    pendo.initialize({
+      visitor: { id: visitorId },
+      account: { id: 'rodhappi-blog' }
+    });
   })('9db79206-b2b7-430d-a8b5-6c8830f89e7b');
   </script>
 </head>
@@ -86,6 +94,10 @@
       <p class="subscribe-subtitle">Estoy volviendo a escribir. Sobre producto, ingeniería, diseño e IA — y lo que pasa cuando todo eso colapsa o converge. Antes pensaba más en software y producto. Hoy más en sistemas y experiencias. Construyo para saber. Sin roles. Sin hype. Con curiosidad.</p>
       <form class="subscribe-form" id="subscribe-form" aria-label="Formulario de suscripción">
         <input type="email" class="subscribe-input" id="subscribe-email" placeholder="Ingresa tu email" required autocomplete="email">
+        <div class="hp-field" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <button type="submit" class="subscribe-button" id="subscribe-btn">Subscribirse</button>
       </form>
       <p class="subscribe-message" id="subscribe-message" hidden></p>
@@ -98,12 +110,22 @@
     var btn = document.getElementById('subscribe-btn');
     var msg = document.getElementById('subscribe-message');
     var emailInput = document.getElementById('subscribe-email');
+    var honeypot = document.getElementById('website');
     if (!form) return;
     form.addEventListener('submit', function(e) {
       e.preventDefault();
       btn.disabled = true;
       btn.textContent = '...';
       msg.hidden = true;
+      if (honeypot && honeypot.value) {
+        msg.textContent = 'Gracias por suscribirte!';
+        msg.className = 'subscribe-message subscribe-success';
+        msg.hidden = false;
+        form.reset();
+        btn.disabled = false;
+        btn.textContent = 'Subscribirse';
+        return;
+      }
       fetch('https://script.google.com/macros/s/AKfycbw8r3KjZJrInDUEfWNhRRv7a30UYzGw9N2S7WlvPuniZG35XyJ_hQljFUE4wTvOFmlG/exec', {
         method: 'POST',
         mode: 'no-cors',
